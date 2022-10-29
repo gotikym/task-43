@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 internal class Program
@@ -13,12 +13,12 @@ internal class Program
 
         Library library = new Library();
 
-        bool exit = false;
+        bool isExit = false;
 
-        while (exit == false)
+        while (isExit == false)
         {
-            Console.WriteLine("Для добавления книги напишите: " + AddBook + "Для показа всех книг: " + ShowAllBooks +
-            "Для удаления книги: " + DeleteBook + "Для сортировки книг: " + ShowBooksOptions + "Для выхода из программы: " + Exit);
+            Console.WriteLine("Для добавления книги напишите: " + AddBook + "\nДля показа всех книг: " + ShowAllBooks +
+            "\nДля удаления книги: " + DeleteBook + "\nДля сортировки книг: " + ShowBooksOptions + "\nДля выхода из программы: " + Exit);
             string userChoice = Console.ReadLine();
 
             switch (userChoice)
@@ -40,7 +40,7 @@ internal class Program
                     break;
 
                 case Exit:
-                    exit = true;
+                    isExit = true;
                     break;
             }
         }
@@ -89,9 +89,14 @@ class Library
 
     public void ShowBooksOptions()
     {
-        bool exit = false;
+        bool isExit = false;
+        const string Name = "1";
+        const string Author = "2";
+        const string Date = "3";
+        const string Genre = "4";
+        const string Exit = "5";
 
-        while (exit == false)
+        while (isExit == false)
         {
             Console.WriteLine("Выберете параметр по которому хотите отсортировать книги: ");
             Console.WriteLine("1: Название\n2: Автор\n3: Дата выпуска\n4: Жанр\n5: Выход");
@@ -99,30 +104,30 @@ class Library
 
             switch (userChoice)
             {
-                case "1":
-                    SortName();
+                case Name:
+                    FilterName();
                     break;
 
-                case "2":
-                    SortAuthor();
+                case Author:
+                    FilterAuthor();
                     break;
 
-                case "3":
-                    SortYearPublishing();
+                case Date:
+                    FilterYearPublishing();
                     break;
 
-                case "4":
-                    SortGenre();
+                case Genre:
+                    FilterGenre();
                     break;
 
-                case "5":
-                    exit = true;
+                case Exit:
+                    isExit = true;
                     break;
             }
         }
     }
 
-    private void SortName()
+    private void FilterName()
     {
         Console.WriteLine("Напишите название для сортировки");
         string userChoice = Console.ReadLine();
@@ -136,7 +141,7 @@ class Library
         }
     }
 
-    private void SortAuthor()
+    private void FilterAuthor()
     {
         Console.WriteLine("Напишите автора для сортировки");
         string userChoice = Console.ReadLine();
@@ -150,7 +155,7 @@ class Library
         }
     }
 
-    private void SortYearPublishing()
+    private void FilterYearPublishing()
     {
         Console.WriteLine("Напишите год выпуска для сортировки");
         string userChoice = Console.ReadLine();
@@ -164,7 +169,7 @@ class Library
         }
     }
 
-    private void SortGenre()
+    private void FilterGenre()
     {
         Console.WriteLine("Напишите жанр для сортировки");
         string userChoice = Console.ReadLine();
