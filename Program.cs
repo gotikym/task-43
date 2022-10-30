@@ -8,7 +8,7 @@ internal class Program
         const string AddBook = "add";
         const string ShowAllBooks = "show";
         const string DeleteBook = "delete";
-        const string ShowBooksOptions = "sort";
+        const string ShowBooksOptions = "filter";
         const string Exit = "exit";
 
         Library library = new Library();
@@ -99,7 +99,8 @@ class Library
         while (isExit == false)
         {
             Console.WriteLine("Выберете параметр по которому хотите отсортировать книги: ");
-            Console.WriteLine("1: Название\n2: Автор\n3: Дата выпуска\n4: Жанр\n5: Выход");
+            Console.WriteLine(Name + ": Название\n" + Author + ": Автор\n" + Date + ": Дата выпуска\n" + Genre +
+                ": Жанр\n" + Exit + ": Выход");
             string userChoice = Console.ReadLine();
 
             switch (userChoice)
