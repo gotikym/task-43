@@ -73,7 +73,6 @@ class Library
     public void DeleteBook()
     {
         Console.WriteLine("Укажите номер книги, которую хотите убрать: ");
-
         _library.RemoveAt(GetNumber());
     }
 
@@ -89,12 +88,12 @@ class Library
 
     public void ShowBooksOptions()
     {
-        bool isExit = false;
         const string Name = "1";
         const string Author = "2";
         const string Date = "3";
         const string Genre = "4";
         const string Exit = "5";
+        bool isExit = false;
 
         while (isExit == false)
         {
@@ -106,19 +105,19 @@ class Library
             switch (userChoice)
             {
                 case Name:
-                    FilterName();
+                    ShowBooksByName();
                     break;
 
                 case Author:
-                    FilterAuthor();
+                    ShowBooksByAuthor();
                     break;
 
                 case Date:
-                    FilterYearPublishing();
+                    ShowBooksByYearPublishing();
                     break;
 
                 case Genre:
-                    FilterGenre();
+                    ShowBooksByGenre();
                     break;
 
                 case Exit:
@@ -128,60 +127,28 @@ class Library
         }
     }
 
-    private void FilterName()
+    private void ShowBooksByName()
     {
         Console.WriteLine("Напишите название для сортировки");
-        string userChoice = Console.ReadLine();
-
-        foreach (Book book in _library)
-        {
-            if (book.Name == userChoice)
-            {
-                Console.WriteLine(book.Name + " " + book.Autor + " " + book.YearPublishing + " " + book.Genre);
-            }
-        }
+        ShowBooks();
     }
 
-    private void FilterAuthor()
+    private void ShowBooksByAuthor()
     {
         Console.WriteLine("Напишите автора для сортировки");
-        string userChoice = Console.ReadLine();
-
-        foreach (Book book in _library)
-        {
-            if (book.Autor == userChoice)
-            {
-                Console.WriteLine(book.Name + " " + book.Autor + " " + book.YearPublishing + " " + book.Genre);
-            }
-        }
+        ShowBooks();
     }
 
-    private void FilterYearPublishing()
+    private void ShowBooksByYearPublishing()
     {
         Console.WriteLine("Напишите год выпуска для сортировки");
-        string userChoice = Console.ReadLine();
-
-        foreach (Book book in _library)
-        {
-            if (book.YearPublishing == userChoice)
-            {
-                Console.WriteLine(book.Name + " " + book.Autor + " " + book.YearPublishing + " " + book.Genre);
-            }
-        }
+        ShowBooks();
     }
 
-    private void FilterGenre()
+    private void ShowBooksByGenre()
     {
         Console.WriteLine("Напишите жанр для сортировки");
-        string userChoice = Console.ReadLine();
-
-        foreach (Book book in _library)
-        {
-            if (book.Genre == userChoice)
-            {
-                Console.WriteLine(book.Name + " " + book.Autor + " " + book.YearPublishing + " " + book.Genre);
-            }
-        }
+        ShowBooks();
     }
 
     private int GetNumber()
@@ -202,6 +169,19 @@ class Library
         }
 
         return numberForReturn;
+    }
+
+    private void ShowBooks()
+    {
+        string userChoice = Console.ReadLine();
+
+        foreach (Book book in _library)
+        {
+            if (book.Genre == userChoice)
+            {
+                Console.WriteLine(book.Name + " " + book.Autor + " " + book.YearPublishing + " " + book.Genre);
+            }
+        }
     }
 }
 
